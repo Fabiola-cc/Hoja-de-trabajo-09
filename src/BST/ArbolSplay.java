@@ -3,7 +3,8 @@ import java.util.Comparator;
 import BST.structure5.SplayTree;
 /**
  * @author MAAG
- *
+ * Árbol Binario de Búsqueda Balanceado - SPLAY
+ * Ligeramente modificado para una mejor implementación en el programa
  */
 public class ArbolSplay<T extends Comparable<T>> implements EstructuraArbol<T> {
 
@@ -28,6 +29,9 @@ public class ArbolSplay<T extends Comparable<T>> implements EstructuraArbol<T> {
 		
 		return miArbolInterno.get(key);
 	}
+
+	@Override
+	public Boolean has(T key) { return miArbolInterno.contains(key);}
 
 	@Override
 	public T remove(T key) {

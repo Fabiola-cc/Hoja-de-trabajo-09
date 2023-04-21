@@ -1,10 +1,11 @@
-import BST.ComparadorPalabras;
 import BST.EstructuraArbol;
 import BST.Palabra;
-import BST.structure5.Association;
-
 import java.io.FileNotFoundException;
 
+/**
+ * @author Fabiola Contreras
+ * Mantiene el árbol donde se registra cada palabra para el diccionario
+ */
 public class RegistroL {
     static EstructuraArbol<Palabra> inglesK;
 

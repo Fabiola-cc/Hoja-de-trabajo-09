@@ -5,7 +5,6 @@ package BST;
 
 /**
  * @author MAAG
- *
  */
 public class Palabra implements Comparable<Palabra> {
 

@@ -1,0 +1,8 @@
+house,casa,sustantivo
+dog,perro,sustantivo
+homework,tarea,sustantivo
+beautiful,hermosa,adjetivo
+woman,mujer,sustantivo
+town,pueblo,sustantivo
+yes,si,conjución
+ugly,fea,adjetivo

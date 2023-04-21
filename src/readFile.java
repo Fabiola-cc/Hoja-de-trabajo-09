@@ -12,6 +12,9 @@ import java.util.Scanner; // Import the Scanner class to read text files
  * @category Hoja de trabajo #7
  *           Propósito: Leer el arhivo txt para obtener los datos de traducción
  * @date 24/03/2023
+ * @version 2
+ *
+ *  Ha sido levemente modificado para la implementación en el actual programa
  */
 
 public class readFile {

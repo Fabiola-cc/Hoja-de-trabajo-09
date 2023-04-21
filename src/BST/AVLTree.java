@@ -2,6 +2,7 @@ package BST;
 
 /**
  * The type Avl tree.
+ * Ligeramente modificado para una mejor implementación en el programa
  *
  * @param <T> the type parameter
  */
@@ -61,6 +62,13 @@ public class AVLTree<T extends Comparable<T>> implements EstructuraArbol<T> {
     public T get(T key) {
         Node result = searchNode(root, key);
         return result == null ? null : result.key;
+    }
+
+    //Método has (tiene)
+    @Override
+    public Boolean has(T key) {
+        Node result = searchNode(root, key);
+        return result != null;
     }
 
     // Método remove (eliminar)
