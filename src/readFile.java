@@ -1,4 +1,5 @@
-import structure5.Association;
+import BST.EstructuraArbol;
+import BST.Palabra;
 
 import java.io.File; // Import the File class
 import java.io.FileNotFoundException; // Import this class to handle errors
@@ -23,85 +24,28 @@ public class readFile {
 
     /**
      * Registra las palabras presentes en el archivo de texto, teniendo como
-     * principal la palabra en ingles (en primera posición)
+     * clave la palabra en ingles (en primera posición)
      * 
      * @return arbol binario de busqueda con información recopilada - clave: palabra
-     *         en ingles
+     *         en ingles, valor: palabra en español
      * @throws FileNotFoundException - archivo no encontrado
      */
-    public BinarySearchTree<String, String[]> _readEnglish() throws FileNotFoundException {
+    public EstructuraArbol<Palabra> _readEnglish(EstructuraArbol<Palabra> tree) throws FileNotFoundException {
         myReader = new Scanner(toRead);
-        BinarySearchTree<String, String[]> total = new BinarySearchTree<>(new WordComparator());
 
         while (myReader.hasNextLine()) {
             String[] temp = myReader.nextLine().split(",");
             if (!temp[0].isBlank()) {
-                String key = temp[0].trim().toLowerCase();
-                String[] values = { "", "" };
-                values[0] = temp[1].trim().toLowerCase();
-                values[1] = temp[2].trim().toLowerCase();
-                Association<String, String[]> use = new Association<String, String[]>(key, values);
-                total.add(use);
+                String eng = temp[0].trim().toLowerCase();
+                String sp = temp[1].trim().toLowerCase();
+
+                Palabra use = new Palabra(eng, sp);
+                tree.add(use);
             }
         }
         myReader.close();
 
-        return total;
-    }
-
-    /**
-     * Registra las palabras presentes en el archivo de texto, teniendo como
-     * principal la palabra en español (en segunda posición)
-     * 
-     * @return arbol binario de busqueda con información recopilada - clave: palabra
-     *         en español
-     * @throws FileNotFoundException - archivo no encontrado
-     */
-    public BinarySearchTree<String, String[]> _readSpanish() throws FileNotFoundException {
-        myReader = new Scanner(toRead);
-        BinarySearchTree<String, String[]> total = new BinarySearchTree<>(new WordComparator());
-
-        while (myReader.hasNextLine()) {
-            String[] temp = myReader.nextLine().split(",");
-            if (!temp[0].isBlank()) {
-                String key = temp[1].trim().toLowerCase();
-                String[] values = { "", "" };
-                values[0] = temp[0].trim().toLowerCase();
-                values[1] = temp[2].trim().toLowerCase();
-                Association<String, String[]> use = new Association<String, String[]>(key, values);
-                total.add(use);
-            }
-        }
-        myReader.close();
-
-        return total;
-    }
-
-    /**
-     * Registra las palabras presentes en el archivo de texto, teniendo como
-     * principal la palabra en frances (en tercera posición)
-     * 
-     * @return arbol binario de busqueda con información recopilada - clave: palabra
-     *         en frances
-     * @throws FileNotFoundException - archivo no encontrado
-     */
-    public BinarySearchTree<String, String[]> _readFrench() throws FileNotFoundException {
-        myReader = new Scanner(toRead);
-        BinarySearchTree<String, String[]> total = new BinarySearchTree<>(new WordComparator());
-
-        while (myReader.hasNextLine()) {
-            String[] temp = myReader.nextLine().split(",");
-            if (!temp[0].isBlank()) {
-                String key = temp[2].trim().toLowerCase();
-                String[] values = { "", "" };
-                values[0] = temp[0].trim().toLowerCase();
-                values[1] = temp[1].trim().toLowerCase();
-                Association<String, String[]> use = new Association<String, String[]>(key, values);
-                total.add(use);
-            }
-        }
-
-        return total;
+        return tree;
     }
 
     /**

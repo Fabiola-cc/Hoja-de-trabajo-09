@@ -1,3 +1,7 @@
+import BST.EstructuraArbol;
+import BST.Palabra;
+import BST.structure5.Association;
+
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,6 +15,7 @@ import java.util.Scanner;
 public class Main {
     static readFile reader;
     static Scanner sc = new Scanner(System.in);
+    static EstructuraArbol<Palabra> Imp_arbol;
 
     /**
      * Permite iniciar el programa
@@ -20,6 +25,8 @@ public class Main {
      */
     public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Bienvenid@");
+        int type = solicitarI("\nPara iniciar, ¿Qué tipo de árbol desea que se implemente en el programa?\n1.Arbol Rojo-Negro  2.Arbol Splay  3.Arbol AVL");
+        Imp_arbol = BST_Factory.getInstance(type);
         menu();
     }
 
@@ -33,21 +40,14 @@ public class Main {
         int finish = 0;
         while (finish != 4) {
             System.out.println(
-                    "\n¿Qué deseas hacer?\n1. Registrar palabras  2. Ver diccionario en orden  3. Traducir oraciones  4. Salir");
+                    "\n¿Qué deseas hacer?\n1. Registrar palabras  2. Traducir oraciones  4. Salir");
             switch (solicitarI("")) {
                 case 1: // Registro de palabras
-                    reader = new readFile("src/diccionario.txt");
-                    RegistroL.saveInfo(reader);
+                    reader = new readFile("src/Spanish.txt"); //Crea un objeto tipo readFile con el archivo de texto necesario
+                    RegistroL.saveInfo(reader, Imp_arbol);
                     System.out.println("Se ha registrado la información en el archivo 'diccionario.txt'\n");
                     break;
-                case 2: // Impresión 'inOrder'
-                    RegistroL.inglesK.InOrderPrint();
-                    System.out.println();
-                    RegistroL.espanolK.InOrderPrint();
-                    System.out.println();
-                    RegistroL.francesK.InOrderPrint();
-                    break;
-                case 3: // Traducción de texto
+                case 2: // Traducción de texto
                     System.out.println(
                             "Se leera la información en el archivo 'texto.txt' asegurate de que no tenga elementos extra como puntos para no interferir con el proceso de traducción.");
                     reader = new readFile("src/texto.txt");

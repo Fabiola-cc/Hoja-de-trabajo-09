@@ -1,3 +1,4 @@
+
 import java.util.Comparator;
 
 /*Permite la comparación de datos para el orden correcto del diccionario */

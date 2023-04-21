@@ -36,8 +36,7 @@ public class Association<K,V>
  * @author, 2001 duane a. bailey
  */
 
-public class Association<K,V> implements Map.Entry<K,V>
-{
+public class Association<K,V> implements Map.Entry<K, V>, Comparable<Association<String, String>> {
     /**
      * The immutable key.  An arbitrary object.
      */
