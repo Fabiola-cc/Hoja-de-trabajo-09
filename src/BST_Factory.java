@@ -13,13 +13,13 @@ public class BST_Factory {
     public static EstructuraArbol<Palabra> getInstance (int BST_Type){
         switch (BST_Type) {
             case 1:
-                return new ArbolRojoNegro<>();
+                return new ArbolRojoNegro<Palabra>();
 
             case 2:
-                return new ArbolSplay<>();
+                return new ArbolSplay<Palabra>();
 
             case 3:
-                return new AVLTree<>();
+                return new AVLTree<Palabra>();
 
             default:
                 System.out.println("Este no es un tipo de árbol incluido");

@@ -1,3 +1,5 @@
+import BST.Palabra;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -19,8 +21,13 @@ public class Traduccion {
                 String original = "";
                 for (String palabra : frase) { // Por cada palabra encontrada
                     palabra = palabra.toLowerCase();
+                    Palabra tempWord = new Palabra(palabra, "");
                     String temp1 = "";
-                    
+                    if (RegistroL.inglesK.get(tempWord) != null) { // Si existe en el diccionario de ingles
+                        temp1 = RegistroL.inglesK.get(tempWord).getSpanish() + " ";
+                    } else { // Si no está registrada
+                        temp1 = "*" + palabra + "* ";
+                    }
 
                     // Agregar las palabras a una cadena, relacionando la frase completa
                     original += palabra + " ";
